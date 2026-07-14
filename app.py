@@ -55,7 +55,7 @@ with col_logo:
 
 with col_title:
 
-    st.title("E(\Phi$)Lab: Predicción de movimiento de Cilindro")
+    st.title("E($\Phi$)Lab: Predicción de movimiento de Cilindro")
 
     st.caption(
         "Calcula la aceleración teórica del sistema y las componentes "
