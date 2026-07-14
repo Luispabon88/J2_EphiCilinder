@@ -65,8 +65,7 @@ with st.expander("Modelo físico utilizado", expanded=False):
         st.image(imagen, caption="Descripción de mi figura", width=500)
 
     except FileNotFoundError:
-        
-    st.error(f"No se pudo encontrar la imagen en la ruta: {image_path}")
+       st.error(f"No se pudo encontrar la imagen en la ruta: {image_path}")
     st.latex(
         r"""
         a =
