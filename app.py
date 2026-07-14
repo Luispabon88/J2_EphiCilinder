@@ -58,11 +58,11 @@ with col_title:
     st.title("E($\Phi$)Lab: Predicción de movimiento de Cilindro")
 
     st.caption(
-        "Calcula la aceleración teórica del sistema y las componentes "
+        "Calcula la aceleración teórica del sistema y las componentes rectangulares "
         "que deberían observarse durante el análisis de video con FizziQ."
     )
 
-with st.expander("Modelo físico utilizado", expanded=False):
+with st.expander("Modelo físico implementado:", expanded=False):
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     image_path = os.path.join(
@@ -88,7 +88,7 @@ with st.expander("Modelo físico utilizado", expanded=False):
 
             st.image(
                 imagen,
-                caption="Sistema cilindro–contrapeso",
+                caption="Sistema cilindro–contrapeso en rampa inclinada",
                 use_container_width=True,
             )
 
@@ -108,7 +108,7 @@ with st.expander("Modelo físico utilizado", expanded=False):
     # COLUMNA DERECHA: ECUACIÓN Y VARIABLES
     # ---------------------------------------------------------
     with model_col:
-        st.markdown("#### Modelo matemático")
+        st.markdown("#### Modelo matemático aplicado")
 
         st.latex(
             r"""
@@ -150,6 +150,10 @@ with st.expander("Modelo físico utilizado", expanded=False):
 
 st.subheader("1. Parámetros experimentales")
 
+st.info(
+    "Ingrese los valores de las variables previo a realizar la experiencia."
+    "Identifique las variables físicas involucradas. "
+)
 with st.form("prediction_form"):
     left, right = st.columns(2)
 
