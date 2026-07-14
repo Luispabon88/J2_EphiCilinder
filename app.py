@@ -1,4 +1,6 @@
 import streamlit as st
+from PIL import Image
+import os
 
 from modules.physics_model import (
     ExperimentalParameters,
@@ -47,6 +49,24 @@ st.write(
 )
 
 with st.expander("Modelo físico utilizado", expanded=False):
+    # 1. Construir la ruta relativa hacia la imagen
+    # Esto evita problemas de rutas sin importar dónde se ejecute en los servidores de Streamlit
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    image_path = os.path.join(BASE_DIR, "assets", "scheme_cylinder.png")
+
+    try:
+        # 2. Abrir la imagen con Pillow
+        imagen = Image.open(image_path)
+    
+        st.title("Mi Aplicación en Streamlit")
+    
+        # 3. Mostrar la imagen controlando el tamaño (en píxeles)
+        # Cambia el valor de 'width' (por ejemplo, a 300, 500, 800) para ajustar el tamaño
+        st.image(imagen, caption="Descripción de mi figura", width=500)
+
+    except FileNotFoundError:
+        
+    st.error(f"No se pudo encontrar la imagen en la ruta: {image_path}")
     st.latex(
         r"""
         a =
