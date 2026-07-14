@@ -64,7 +64,7 @@ with st.expander("Modelo físico utilizado", expanded=False):
         - \(N\): número de varillas.
         - \(m\): masa de una varilla.
         - \(R\): radio externo del cilindro.
-        - \(r_x\): radio donde se colocan las varillas.
+        - \($r_x$\): radio donde se colocan las varillas.
         - \(\theta\): ángulo de la rampa.
         """
     )
