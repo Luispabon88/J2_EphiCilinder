@@ -269,20 +269,7 @@ if submitted:
         else:
             st.info(motion.message)
 
-        st.markdown(
-            f"""
-            <div class="result-card">
-                <b>Masa total de las varillas:</b>
-                {prediction.total_rods_mass_kg:.5f} kg<br>
-                <b>Radio seleccionado:</b>
-                {parameters.rods_radius_m:.4f} m<br>
-                <b>Término impulsor del numerador:</b>
-                {prediction.driving_term_kg:.6f} kg
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
+       
         st.subheader("3. Predicción para FizziQ")
         st.write(
             "Si FizziQ ajusta la posición mediante "
