@@ -10,7 +10,7 @@ from modules.physics_model import (
 
 st.set_page_config(
     page_title="E(Phi)Lab: Cilindro",
-    page_icon="🐢⚛️",
+    page_icon="🐢",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
