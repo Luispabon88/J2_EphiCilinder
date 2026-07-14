@@ -41,12 +41,27 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+# ======================================================
+# ENCABEZADO DE LA APLICACIÓN
+# ======================================================
 
-st.title("Predicción del movimiento del cilindro")
-st.write(
-    "Calcula la aceleración teórica del sistema y las componentes que deberían "
-    "observarse en el análisis de video con FizziQ."
-)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+logo_path = os.path.join(BASE_DIR, "assets", "logo.png")
+
+col_logo, col_title = st.columns([1, 8], vertical_alignment="center")
+
+with col_logo:
+    st.image(logo_path, width=80)
+
+with col_title:
+
+    st.title("Predicción del movimiento del cilindro")
+
+    st.caption(
+        "Calcula la aceleración teórica del sistema y las componentes "
+        "que deberían observarse durante el análisis de video con FizziQ."
+    )
+
 with st.expander("Modelo físico utilizado", expanded=False):
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
