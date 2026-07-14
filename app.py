@@ -59,17 +59,17 @@ with st.expander("Modelo físico utilizado", expanded=False):
     )
     st.markdown(
         """
-        - \(m_1\): masa del contrapeso.
+        - \($m_1$\): masa del contrapeso.
         - \(M\): masa del cilindro.
         - \(N\): número de varillas.
         - \(m\): masa de una varilla.
         - \(R\): radio externo del cilindro.
         - \($r_x$\): radio donde se colocan las varillas.
-        - \(\theta\): ángulo de la rampa.
+        - \($\theta\$): ángulo de la rampa.
         """
     )
 
-st.subheader("1. Configuración experimental")
+st.subheader("1. Parámetros experimentales")
 
 with st.form("prediction_form"):
     left, right = st.columns(2)
