@@ -9,7 +9,7 @@ from modules.physics_model import (
 )
 
 st.set_page_config(
-    page_title="E($\Phi)Lab",
+    page_title="E($\Phi$)Lab",
     page_icon="⚙️",
     layout="wide",
     initial_sidebar_state="collapsed",
