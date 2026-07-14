@@ -59,10 +59,17 @@ with st.expander("Modelo físico utilizado", expanded=False):
         imagen = Image.open(image_path)
     
         st.title("Mi Aplicación en Streamlit")
+        # Creamos un contenedor HTML con alineación centrada
+        st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
     
         # 3. Mostrar la imagen controlando el tamaño (en píxeles)
         # Cambia el valor de 'width' (por ejemplo, a 300, 500, 800) para ajustar el tamaño
-        st.image(imagen, caption="Descripción de mi figura", width=500)
+        st.image(imagen, caption="Descripción de mi figura", width=300)
+    
+        # Cerramos el contenedor HTML
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+       
 
     except FileNotFoundError:
        st.error(f"No se pudo encontrar la imagen en la ruta: {image_path}")
