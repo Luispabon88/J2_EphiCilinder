@@ -47,53 +47,91 @@ st.write(
     "Calcula la aceleración teórica del sistema y las componentes que deberían "
     "observarse en el análisis de video con FizziQ."
 )
-
 with st.expander("Modelo físico utilizado", expanded=False):
-    # 1. Construir la ruta relativa hacia la imagen
-    # Esto evita problemas de rutas sin importar dónde se ejecute en los servidores de Streamlit
+
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(BASE_DIR, "assets", "scheme_cylinder.png")
-
-    try:
-        # 2. Abrir la imagen con Pillow
-        imagen = Image.open(image_path)
-    
-        st.title("Mi Aplicación en Streamlit")
-        # Creamos un contenedor HTML con alineación centrada
-        st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
-    
-        # 3. Mostrar la imagen controlando el tamaño (en píxeles)
-        # Cambia el valor de 'width' (por ejemplo, a 300, 500, 800) para ajustar el tamaño
-        st.image(imagen, caption="Descripción de mi figura", width=300)
-    
-        # Cerramos el contenedor HTML
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-       
-
-    except FileNotFoundError:
-       st.error(f"No se pudo encontrar la imagen en la ruta: {image_path}")
-    st.latex(
-        r"""
-        a =
-        \frac{
-        g\left[m_1-\left(M+Nm\right)\sin(\theta)\right]
-        }{
-        \frac{3M}{2}+Nm\left(1+\frac{r_x^2}{R^2}\right)+m_1
-        }
-        """
+    image_path = os.path.join(
+        BASE_DIR,
+        "assets",
+        "scheme_cylinder.png",
     )
-    st.markdown(
-        """
-        - \($m_1$\): masa del contrapeso.
-        - \(M\): masa del cilindro.
-        - \(N\): número de varillas.
-        - \(m\): masa de una varilla.
-        - \(R\): radio externo del cilindro.
-        - \($r_x$\): radio donde se colocan las varillas.
-        - \(theta\): ángulo de la rampa.
-        """
+
+    image_col, model_col = st.columns(
+        [0.9, 1.35],
+        gap="large",
+        vertical_alignment="center",
     )
+
+    # ---------------------------------------------------------
+    # COLUMNA IZQUIERDA: ESQUEMA EXPERIMENTAL
+    # ---------------------------------------------------------
+    with image_col:
+        st.markdown("#### Esquema experimental")
+
+        try:
+            imagen = Image.open(image_path)
+
+            st.image(
+                imagen,
+                caption="Sistema cilindro–contrapeso",
+                use_container_width=True,
+            )
+
+        except FileNotFoundError:
+            st.error(
+                "No se encontró la imagen del sistema en:\n\n"
+                f"`{image_path}`"
+            )
+
+        except OSError:
+            st.error(
+                "La imagen fue encontrada, pero no pudo abrirse. "
+                "Verifica que el archivo PNG no esté dañado."
+            )
+
+    # ---------------------------------------------------------
+    # COLUMNA DERECHA: ECUACIÓN Y VARIABLES
+    # ---------------------------------------------------------
+    with model_col:
+        st.markdown("#### Modelo matemático")
+
+        st.latex(
+            r"""
+            a =
+            \frac{
+                g\left[
+                    m_1-(M+Nm)\sin(\theta)
+                \right]
+            }{
+                \frac{3M}{2}
+                +Nm\left(
+                    1+\frac{r_x^2}{R^2}
+                \right)
+                +m_1
+            }
+            """
+        )
+
+        st.markdown(
+            r"""
+            donde:
+
+            - \(a\): aceleración del sistema sobre la rampa.
+            - \(g\): aceleración de la gravedad.
+            - \(m_1\): masa del contrapeso.
+            - \(M\): masa del cilindro.
+            - \(N\): número de varillas.
+            - \(m\): masa de cada varilla.
+            - \(R\): radio externo del cilindro.
+            - \(r_x\): radio de ubicación de las varillas.
+            - \(\theta\): ángulo de inclinación de la rampa.
+            """
+        )
+
+        st.info(
+            "El signo de la aceleración permite predecir qué parte "
+            "del sistema domina el movimiento."
+        )
 
 st.subheader("1. Parámetros experimentales")
 
