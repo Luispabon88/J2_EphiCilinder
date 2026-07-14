@@ -272,6 +272,10 @@ if submitted:
        
         st.subheader("3. Predicción para FizziQ")
         st.write(
+            "Recuerde realizar gráficas posición vs. tiempo (x vs. t) y (y vs. t)"
+            "en la app FizziQ. Use el ajuste cuadrático para analizar los datos"
+        )
+        st.write(
             "Si FizziQ ajusta la posición mediante "
             r"$x(t)=A_x t^2+B_x t+C_x$ y "
             r"$y(t)=A_y t^2+B_y t+C_y$, entonces:"
